@@ -79,6 +79,10 @@ def start_monitor():
                         if(throttleResponse != -1):
                             logger.info("Unthrottled speed set correctly to: {}B/s".format(throttleResponse))
                             last_active_streams = active_streams
+                            try:
+                                notifyClient.notify("No active streams unthrottle speed is set to: {}B/s".format(throttleResponse))
+                            except Exception as e:
+                                logger.error("Error encountered when attempting to send notification")
             logger.info("Sleeping for %d seconds before checking again", plexServer.get_interval())
             time.sleep(plexServer.get_interval())
     except Exception as e:
