@@ -1,13 +1,13 @@
 [Unit]
-Description=nzbthrottle
+Description=sabthrottle
 After=network-online.target
 
 [Service]
 User=root
 Group=root
 Type=simple
-WorkingDirectory=/opt/nzbthrottle/
-ExecStart=/usr/bin/python3 /opt/nzbthrottle/throttle.py
+WorkingDirectory=/opt/sabthrottle/
+ExecStart=/usr/bin/python3 /opt/sabthrottle/throttle.py
 Restart=always
 RestartSec=10
 

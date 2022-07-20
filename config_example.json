@@ -5,23 +5,21 @@
     "interval":60,
     "token": "daf32j3ik3l2k"
   },
-  "nzbget":
+  "sabnzbd":
   {
-    "username":"test_user",
-    "password":"test_pass",
+    "apikey":"123124sfdadsf",
     "url":"http://localhost:6789",
     "speeds":{
-      "1":5000,
-      "2":4000,
-      "3":3000,
-      "4":2000,
-      "5":1000
+      "1":"50M",
+      "2":"40M",
+      "3":"30M",
+      "4":"20M",
+      "5":"10M"
     },
-    "max_speed":80000
-  },
-  "notifications": {
+    "max_speed":"800M"
+  },"notifications": {
     "Discord": {
-      "enabled": false,
+      "enabled": false ,
       "url": "discord://webhook_id/webhook_token"
     },
     "Rocket.Chat": {

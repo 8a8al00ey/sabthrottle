@@ -23,6 +23,6 @@ class NotificationClient(object):
 
     def notify(self,message):
         self._notifier.notify(
-            title='NZBThrottle Notification',
+            title='SABThrottle Notification',
             body=message
         )

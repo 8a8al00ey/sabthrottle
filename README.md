@@ -1,8 +1,10 @@
-# nzbthrottle
+# sabthrottle
 
 
 ## Description
-Nzbthrottle was designed in order to dynamically control the bandwidth allocation when users are actively streaming from Plex to avoid unnecessary buffering while still allowing the user to download at the fastest rate possible.
+Code taken from daghaian/nzbthrottle and changed to work with Sabnzbd.
+
+Sabthrottle was designed in order to dynamically control the bandwidth allocation when users are actively streaming from Plex to avoid unnecessary buffering while still allowing the user to download at the fastest rate possible.
 
 ## Installation
 
@@ -22,19 +24,18 @@ Nzbthrottle was designed in order to dynamically control the bandwidth allocatio
     "interval":60,
     "token": "daf32j3ik3l2k"
   },
-  "nzbget":
+  "sabnzbd":
   {
-    "username":"test_user",
-    "password":"test_pass",
+    "apikey":"123124sfdadsf",
     "url":"http://localhost:6789",
     "speeds":{
-      "1":5000,
-      "2":4000,
-      "3":3000,
-      "4":2000,
-      "5":1000
+      "1":"50M",
+      "2":"40M",
+      "3":"30M",
+      "4":"20M",
+      "5":"10M"
     },
-    "max_speed":80000
+    "max_speed":"0M"
   },"notifications": {
     "Discord": {
       "enabled": false ,
@@ -76,17 +77,15 @@ Nzbthrottle was designed in order to dynamically control the bandwidth allocatio
 
 ```token``` - Your X-Plex-Token
 
-***Nzbget***
+***Sabnzbd***
 
-```username``` - Username for Nzbget
+```apikey``` - ApiKey for Sabnzbd
 
-```password``` - Password for Nzbget
+```url``` - URL of your Sabnzbd Client
 
-```url``` - URL of your NZBGet Client
+```speeds``` - Define speed to throttle to based on number of active streams, ie 10000K or 10M
 
-```speeds``` - Define speed to throttle to (in kB/s) based on number of active streams
-
-```max_speed``` - Define maximum speed when the throttle is lifted (in kB/s). Set to 0 if you wish to not use a limit
+```max_speed``` - Define maximum speed when the throttle is lifted. Set to 0M if you wish to not use a limit or set this as same as your "Maximum line speed" in Config -> General -> Tunning (K|M)
 
 ***Notifications***
 
@@ -102,12 +101,12 @@ Nzbthrottle was designed in order to dynamically control the bandwidth allocatio
 ### Running script as service ###
 If you do not wish to run the script manually, the module can be daemonized by copying the service file and running the script as a service. May need to modify location of script based on your preference by changing the following line in 'nzbthrottle.service' 
 ```
-ExecStart=/usr/bin/python3 /opt/nzbthrottle/throttle.py
+ExecStart=/usr/bin/python3 /opt/sabthrottle/throttle.py
 ```
 
 ### Running script in a Docker Container ###
 ```
-docker run --name nzbthrottle -d -v /PATH/TO/CONFIG.json:/nzbthrottle/config.json daghaian/nzbthrottle
+docker run --name sabthrottle -d -v /PATH/TO/CONFIG.json:/sabthrottle/config.json 8a8al00ey/sabthrottle
 ```
 
 ## Support on Beerpay
